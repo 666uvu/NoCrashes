@@ -1,17 +1,11 @@
 package uvu.dev.mixin;
 
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.minecraft.client.Minecraft;
-import net.minecraft.src.GuiScreen;
-import net.minecraft.src.World;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import uvu.dev.GuiException;
+import org.spongepowered.asm.mixin.Mixin;
+import net.minecraft.client.Minecraft;
+import uvu.dev.NoCrashes;
 
 @Mixin(
         value = Minecraft.class,
@@ -19,12 +13,6 @@ import uvu.dev.GuiException;
 )
 public abstract class MinecraftMixin
 {
-    @Shadow
-    public abstract void changeWorld1(World var1);
-
-    @Shadow
-    public abstract void displayGuiScreen(GuiScreen screen);
-
     @WrapOperation(
             method = "run",
             at = @At(
@@ -39,9 +27,7 @@ public abstract class MinecraftMixin
             original.call(instance);
         } catch (RuntimeException e)
         {
-            e.printStackTrace();
-            this.changeWorld1(null);
-            this.displayGuiScreen(new GuiException(e));
+            NoCrashes.LOGGER.error(e.getMessage());
         }
     }
 }
