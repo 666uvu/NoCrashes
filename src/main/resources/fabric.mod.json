@@ -1,30 +1,23 @@
 {
   "schemaVersion": 1,
-  "id": "template",
+  "id": "nocrashes",
   "version": "${version}",
-
-  "name": "Template",
+  "name": "NoCrashes",
   "description": "",
   "authors": [
-    "DanyGames2014"
+    "666uvu"
   ],
-
   "license": "MIT",
-  "icon": "assets/template/icon.png",
-
+  "icon": "assets/nocrashes/icon.png",
   "environment": "*",
   "entrypoints": {
-    "stationapi:event_bus": [
-    ],
-    "stationapi:event_bus_client": [
-    ],
-    "stationapi:event_bus_server": [
+    "main": [
+      "uvu.dev.NoCrashes"
     ]
   },
   "mixins": [
-    "template.mixins.json"
+    "nocrashes.mixins.json"
   ],
-
   "depends": {
     "minecraft": "1.0.0-beta.7.3"
   }
