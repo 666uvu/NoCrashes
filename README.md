@@ -1,1 +1,1 @@
-My personal template for StationAPI mods
+NoCrashes, ported to babric and it actually doesn't even kick you, compatible server-size (no need for it on the client) and client-side (for singleplayer only).
