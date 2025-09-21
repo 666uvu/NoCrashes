@@ -6,6 +6,10 @@
   "client": [
     "MinecraftMixin"
   ],
+  "server": [
+    "NetworkListenThreadMixin",
+    "INetServerHandler"
+  ],
   "injectors": {
     "defaultRequire": 1
   }
